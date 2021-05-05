@@ -8,7 +8,7 @@ import Tasks from 'src/components/Tasks';
 import Form from 'src/components/Form';
 import Counter from 'src/components/Counter';
 
-import taskListData from 'src/data/tasks';
+// import taskListData from 'src/data/tasks';
 
 class App extends React.Component {
 
@@ -31,9 +31,8 @@ class App extends React.Component {
     this.setState({
       tasksList: newTasksList,
       newTaskLabel: '',
-    });
-
-    console.log(this.state.tasksList);
+    },
+    this.saveStateToLocalStorage);
   };
 
   setNewTaskLabel = (newTaskLabelFromForm) => {
@@ -43,22 +42,13 @@ class App extends React.Component {
   }
 
   getNextTaskId = () => {
-    // on récupère la liste des tâches
     const { tasksList } = this.state;
 
     if (tasksList.length > 0) {
-      // on ne récupère que les id
       const tasksIds = tasksList.map((task) => (task.id));
-
-      console.log(tasksIds);
-
-      // on récupère l'id max :
       const maxId = Math.max(...tasksIds);
-
-      // on renvoie le max + 1
       return maxId + 1;
     }
-
     return 1;
   }
   updateTaskState = (taskId) => {
@@ -77,8 +67,18 @@ class App extends React.Component {
     });
     this.setState({
       tasksList: updatedTaskList,
-    });
+    },
+    this.saveStateToLocalStorage);
 
+  }
+  saveStateToLocalStorage = () => {
+    localStorage.setItem('state', JSON.stringify(this.state))
+  }
+  componentDidMount() {
+    const state = localStorage.getItem('state')
+    if (state) {
+      this.setState(JSON.parse(state))
+    }
   }
 
   render() {
