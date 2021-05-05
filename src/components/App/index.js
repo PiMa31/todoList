@@ -32,7 +32,7 @@ class App extends React.Component {
       tasksList: newTasksList,
       newTaskLabel: '',
     },
-    this.saveStateToLocalStorage);
+      this.saveStateToLocalStorage);
   };
 
   setNewTaskLabel = (newTaskLabelFromForm) => {
@@ -68,12 +68,23 @@ class App extends React.Component {
     this.setState({
       tasksList: updatedTaskList,
     },
-    this.saveStateToLocalStorage);
-
+      this.saveStateToLocalStorage);
   }
+  deleteTaskState = (id) => {
+    const newArr = [...this.state.tasksList];
+    console.log(newArr)
+    console.log(id)
+    newArr.splice(id, 1);
+    console.log(newArr)
+    this.setState({tasksList: newArr},
+      this.saveStateToLocalStorage);
+}
+
   saveStateToLocalStorage = () => {
     localStorage.setItem('state', JSON.stringify(this.state))
   }
+
+
   componentDidMount() {
     const state = localStorage.getItem('state')
     if (state) {
@@ -87,13 +98,13 @@ class App extends React.Component {
 
     return (
       <div className="app">
-         <Form
+        <Form
           newTaskLabel={newTaskLabel}
           setNewTaskLabel={this.setNewTaskLabel}
           submitTask={this.addTask}
         />
         <Counter count={undoneTasksCount} />
-        <Tasks changeTaskDone={this.updateTaskState} tasksList={tasksList} />
+        <Tasks changeTaskDone={this.updateTaskState} tasksList={tasksList} deleteTask={this.deleteTaskState} />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task = ({ id, label, done, changeTaskDone }) => {
+const Task = ({ id, label, done, changeTaskDone, deleteTask }) => {
 
   const htmlId = `task-${id}`;
   const htmlClass = done ? 'tasks__task tasks__task--done' : 'tasks__task';
@@ -18,6 +18,12 @@ const Task = ({ id, label, done, changeTaskDone }) => {
       <label htmlFor={htmlId}>
         {label}
       </label>
+      <button
+        className="task_delete"
+        type="button"
+        onClick={() => {console.log('la', {id}); deleteTask(id)}}>
+        Supprimer
+        </button>
     </li>
   );
 };

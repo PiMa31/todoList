@@ -4,11 +4,11 @@ import './tasks.scss';
 
 import Task from './Task';
 
-const Tasks = ({tasksList, changeTaskDone}) => (
+const Tasks = ({tasksList, changeTaskDone, deleteTask}) => (
   <ul className="tasks">
     {
       tasksList.map((task) => (
-        <Task key={task.id} {...task} changeTaskDone={changeTaskDone} />
+        <Task key={task.id} {...task} changeTaskDone={changeTaskDone} deleteTask={deleteTask}/>
       ))
     }
   </ul>
