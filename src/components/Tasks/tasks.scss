@@ -14,7 +14,7 @@
     margin:1rem 0;
     height: 3rem;
     line-height: 3rem;
-    opacity: 0.5;
+    background: darkgray;
 
     & label {
       text-decoration: line-through;
@@ -23,4 +23,16 @@
 }
 label {
   margin-left: 1rem;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+}
+.li__button{
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+button {
+  margin-right: 0.5rem;
 }

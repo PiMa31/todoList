@@ -71,11 +71,7 @@ class App extends React.Component {
       this.saveStateToLocalStorage);
   }
   deleteTaskState = (id) => {
-    const newArr = [...this.state.tasksList];
-    console.log(newArr)
-    console.log(id)
-    newArr.splice(id, 1);
-    console.log(newArr)
+    const newArr = [...this.state.tasksList].filter(task => task.id !== id);
     this.setState({tasksList: newArr},
       this.saveStateToLocalStorage);
 }
