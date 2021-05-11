@@ -94,6 +94,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
+      <h1>ToDoList</h1>
         <Form
           newTaskLabel={newTaskLabel}
           setNewTaskLabel={this.setNewTaskLabel}
