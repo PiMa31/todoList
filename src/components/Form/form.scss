@@ -1,6 +1,6 @@
 .form {
   &__input {
-    background-color: green;
+    background-color: rgb(14, 145, 14);
     border: none;
     box-shadow: 25px rgba(0,0,0,.1);
     color: white;
@@ -9,10 +9,15 @@
     height: 5rem;
     font-size: 1.5rem;
     padding: 0 1rem;
+    border-radius: 10px;
+    font-family: 'Permanent Marker', cursive;
 
     &::placeholder {
       color : rgba(255, 255, 255, .5);
       padding-left: 1rem;
+    }
+    &:focus{
+      background-color: yellowgreen;
     }
   }
 }

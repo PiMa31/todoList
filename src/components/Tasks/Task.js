@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faWindowClose, faUndoAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faWindowClose, faUndoAlt, faPenSquare } from '@fortawesome/free-solid-svg-icons';
 import Fade from 'react-reveal/Fade';
 
 const Task = ({ id, label, done, changeTaskDone, deleteTask }) => {
@@ -22,9 +22,17 @@ const Task = ({ id, label, done, changeTaskDone, deleteTask }) => {
               <FontAwesomeIcon icon={faCheckSquare} size="2x" color="green" />
             </button>
           }
-          {done &&
+          {!done &&
             <button
               className="task_validate"
+              type="button"
+              onClick={() => { changeTaskDone(id) }}>
+              <FontAwesomeIcon icon={faPenSquare} size="2x" color="orange" />
+            </button>
+          }
+          {done &&
+            <button
+              className="task_undo"
               type="button"
               onClick={() => { changeTaskDone(id) }}>
               <FontAwesomeIcon icon={faUndoAlt} size="2x" color="orange" />
